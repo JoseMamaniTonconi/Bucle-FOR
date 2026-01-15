@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resolución Final: 14 Ejercicios FOR</title>
+    <style>
+        :root { --primary: #51629b; --secondary: #334155; --bg: #f1f5f9; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; color: var(--secondary); }
+        
+        /* Carátula */
+        .caratula {
+            height: 100vh; background: linear-gradient(135deg, #0f172a 0%, #1e40af 100%);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            color: white; text-align: center; padding: 20px;
+        }
+        .info-card {
+            background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px;
+            backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); width: 100%; max-width: 500px;
+        }
+        .info-card p { text-align: left; border-bottom: 1px solid #ffffff33; padding: 8px 0; margin: 5px 0; }
+        .info-card span { font-weight: bold; color: #93c5fd; }
+
+        /* Contenedor de Ejercicios */
+        .container { max-width: 1100px; margin: 50px auto; padding: 0 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+        .card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px -1px #0001; border-top: 4px solid var(--primary); }
+        h3 { color: var(--primary); font-size: 1rem; margin-top: 0; border-bottom: 1px solid #eee; padding-bottom: 8px; }
+        input, select { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 6px; }
+        button { width: 100%; background: var(--primary); color: white; border: none; padding: 12px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+        button:hover { background: #4666bc; }
+        .res { margin-top: 15px; padding: 12px; background: #f8fafc; border-radius: 6px; font-size: 0.85rem; max-height: 150px; overflow-y: auto; white-space: pre-wrap; color: #1e40af; }
+    </style>
+</head>
+<body>
+
+    <div class="caratula">
+        <h1 style="font-size: 2.5rem; margin-bottom: 10px;">TRABAJO PRÁCTICO SESION 5 - II</h1>
+        <h2 style="font-weight: 300; margin-bottom: 30px;">Estructuras Repetitivas: Bucle FOR</h2>
+        <div class="info-card">
+            <p><span>Curso:</span> DESARROLLO DE ENTORNOS WEB</p>
+            <p><span>Tema:</span> Resolución de 14 Ejercicios Propuestos</p>
+            <p><span>Estudiantes:</span> ALEJO FARFAN PIERINA<br>
+        ARCA RUBIO MIXI<br>
+        Arca rubio jazzmine<br>
+        SANCHEZ CAJAVILCA LIZBETH<br>
+        MAMANI TONCONI JOSE</p>
+            <p><span>Institución:</span> UPRIT</p>
+        </div>
+        <p style="margin-top: 30px; opacity: 0.7;">Desliza para ver los resultados ↓</p>
+    </div>
+
+    <div class="container">
+        <div class="grid">
+            <div class="card">
+                <h3>1 y 2. Conteo 1-50 y 50-1</h3>
+                <button onclick="ej1_2()">Generar</button>
+                <div class="res" id="r1_2"></div>
+            </div>
+
+            <div class="card">
+                <h3>3. Suma del 1 al 20</h3>
+                <button onclick="ej3()">Calcular</button>
+                <div class="res" id="r3"></div>
+            </div>
+
+            <div class="card">
+                <h3>4. Tabla del 9</h3>
+                <button onclick="ej4()">Ver Tabla</button>
+                <div class="res" id="r4"></div>
+            </div>
+
+            <div class="card">
+                <h3>5. Contar Pares (1-100)</h3>
+                <button onclick="ej5()">Contar</button>
+                <div class="res" id="r5"></div>
+            </div>
+
+            <div class="card">
+                <h3>6. Múltiplos de 3 (hasta 30)</h3>
+                <button onclick="ej6()">Listar</button>
+                <div class="res" id="r6"></div>
+            </div>
+
+            <div class="card">
+                <h3>7. Deletrear Nombre</h3>
+                <input type="text" id="in7" placeholder="Ingresa un nombre">
+                <button onclick="ej7()">Separar</button>
+                <div class="res" id="r7"></div>
+            </div>
+
+            <div class="card">
+                <h3>8. Factorial</h3>
+                <input type="number" id="in8" placeholder="Número">
+                <button onclick="ej8()">Calcular !</button>
+                <div class="res" id="r8"></div>
+            </div>
+
+            <div class="card">
+                <h3>9. Promedio de 5 números</h3>
+                <button onclick="ej9()">Ingresar Datos</button>
+                <div class="res" id="r9"></div>
+            </div>
+
+            <div class="card">
+                <h3>10. Mayores a 10</h3>
+                <button onclick="ej10()">Evaluar 5 Números</button>
+                <div class="res" id="r10"></div>
+            </div>
+
+            <div class="card">
+                <h3>11. Password Fuerte</h3>
+                <input type="text" id="in11" placeholder="Nombre para clave">
+                <button onclick="ej11()">Generar</button>
+                <div class="res" id="r11"></div>
+            </div>
+
+            <div class="card">
+                <h3>12. Serie: 1, 4, 9, 16...</h3>
+                <input type="number" id="in12" placeholder="N términos">
+                <button onclick="ej12()">Calcular Suma</button>
+                <div class="res" id="r12"></div>
+            </div>
+
+            <div class="card">
+                <h3>13. Producto de Serie (1/n)</h3>
+                <input type="number" id="in13" placeholder="N elementos">
+                <button onclick="ej13()">Calcular P</button>
+                <div class="res" id="r13"></div>
+            </div>
+
+            <div class="card">
+                <h3>14. Estudio Zoológico</h3>
+                <select id="animal14">
+                    <option value="20">Elefantes (20)</option>
+                    <option value="15">Jirafas (15)</option>
+                    <option value="40">Chimpancés (40)</option>
+                </select>
+                <button onclick="ej14()">Iniciar Muestreo</button>
+                <div class="res" id="r14"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 1 y 2. Números 1-50 y 50-1 [cite: 148, 149]
+        function ej1_2() {
+            let a="", b="";
+            for(let i=1; i<=50; i++) a += i + " ";
+            for(let i=50; i>=1; i--) b += i + " ";
+            document.getElementById('r1_2').innerText = "1-50: " + a + "\n\n50-1: " + b;
+        }
+
+        // 3. Suma 1-20 [cite: 150]
+        function ej3() {
+            let s=0; for(let i=1; i<=20; i++) s+=i;
+            document.getElementById('r3').innerText = "Suma total: " + s;
+        }
+
+        // 4. Tabla del 9 [cite: 151]
+        function ej4() {
+            let r=""; for(let i=1; i<=10; i++) r += `9 x ${i} = ${9*i}\n`;
+            document.getElementById('r4').innerText = r;
+        }
+
+        // 5. Pares 1-100 [cite: 152]
+        function ej5() {
+            let c=0; for(let i=1; i<=100; i++) if(i%2==0) c++;
+            document.getElementById('r5').innerText = "Existen " + c + " números pares.";
+        }
+
+        // 6. Múltiplos de 3 [cite: 153]
+        function ej6() {
+            let r=""; for(let i=1; i<=30; i++) if(i%3==0) r += i + " ";
+            document.getElementById('r6').innerText = r;
+        }
+
+        // 7. Letras de nombre [cite: 154]
+        function ej7() {
+            let n = document.getElementById('in7').value;
+            let r=""; for(let i=0; i<n.length; i++) r += n[i] + "\n";
+            document.getElementById('r7').innerText = r;
+        }
+
+        // 8. Factorial [cite: 155]
+        function ej8() {
+            let n = parseInt(document.getElementById('in8').value);
+            let f=1; for(let i=1; i<=n; i++) f*=i;
+            document.getElementById('r8').innerText = "Factorial: " + f;
+        }
+
+        // 9. Promedio de 5 [cite: 156]
+        function ej9() {
+            let s=0; for(let i=0; i<5; i++) s += parseFloat(prompt("Número " + (i+1)));
+            document.getElementById('r9').innerText = "Promedio: " + (s/5);
+        }
+
+        // 10. Mayores a 10 [cite: 157]
+        function ej10() {
+            let c=0; for(let i=0; i<5; i++) if(parseFloat(prompt("Número")) > 10) c++;
+            document.getElementById('r10').innerText = "Cantidad mayores a 10: " + c;
+        }
+
+        // 11. Password [cite: 158-164]
+        function ej11() {
+            let n = document.getElementById('in11').value;
+            if(!n) return;
+            let p1 = n.length;
+            let p2 = (p1%2==0) ? "t" : "c";
+            let p3 = n[n.length-1];
+            let p4 = "aeiouAEIOU".includes(p3) ? "$" : "%";
+            let p5 = n.substring(0,3);
+            document.getElementById('r11').innerText = "Pass: " + p1+p2+p3+p4+p5;
+        }
+
+        // 12. Sumatoria serie n^2 
+        function ej12() {
+            let n = parseInt(document.getElementById('in12').value);
+            let s=0; for(let i=1; i<=n; i++) s += Math.pow(i, 2);
+            document.getElementById('r12').innerText = "Sumatoria (1+4+9...): " + s;
+        }
+
+        // 13. Producto serie 1/n [cite: 166-167]
+        function ej13() {
+            let n = parseInt(document.getElementById('in13').value);
+            let p=1; for(let i=1; i<=n; i++) p *= (1/i);
+            document.getElementById('r13').innerText = "Producto: " + p.toFixed(6);
+        }
+
+        // 14. Zoológico [cite: 168-171]
+        function ej14() {
+            let m = parseInt(document.getElementById('animal14').value);
+            let c1=0, c2=0, c3=0;
+            for(let i=0; i<m; i++) {
+                let e = parseFloat(prompt(`Edad animal ${i+1}:`));
+                if(e <= 1) c1++;
+                else if(e < 3) c2++;
+                else c3++;
+            }
+            document.getElementById('r14').innerText = `0-1 año: ${(c1/m*100).toFixed(1)}%\n1-3 años: ${(c2/m*100).toFixed(1)}%\n3+ años: ${(c3/m*100).toFixed(1)}%`;
+        }
+    </script>
+</body>
+</html>
